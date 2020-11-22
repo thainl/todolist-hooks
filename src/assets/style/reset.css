@@ -1,0 +1,122 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  font-weight: normal;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section{
+  display: block;
+}
+ol, ul, li{
+  list-style: none;
+}
+blockquote, q{
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after{
+  content: '';
+  content: none;
+}
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th {
+    text-align: inherit;
+}
+
+html {
+    background-color: #f5f7f8;
+    color: #000;
+    font-size: 12px;
+}
+
+body, input, textarea, button, select, pre, xmp, tt, code, kbd, samp {
+    line-height: 1.5;
+}
+
+img, object, input, textarea, button, select {
+    vertical-align: middle;
+}
+
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+
+input, textarea, button, select, a {
+    outline: 0 none;
+    border: none;
+    box-sizing: border-box;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+mark {
+    background-color: transparent;
+}
+
+a, ins, s, u, del {
+    text-decoration: none;
+}
+
+html {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family:'STHeiti', 'Microsoft YaHei', 'Helvetica', 'Arial', sans-serif;
+    color: #333;
+    font-size: .28em;
+    line-height: 1;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+hr {
+    height: .02rem;
+    margin: 0.1rem 0;
+    border: medium none;
+    border-top: .02rem solid #cacaca;
+}
+
+a {
+    color: #333;
+}
+
+img {width: 100%;}
+
+body, #app {
+    height: 100%;
+}
