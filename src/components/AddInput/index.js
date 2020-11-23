@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, memo } from "react";
 import { Transition } from "react-transition-group";
 import "./index.scss";
 
-export default function AddInput(props) {
+const AddInput = memo(function (props) {
     const { isInputShow, addItem } = props;
     const inputRef = useRef();
     const duration = 300;
@@ -58,4 +58,6 @@ export default function AddInput(props) {
             )}
         </Transition>
     );
-}
+})
+
+export default AddInput;
