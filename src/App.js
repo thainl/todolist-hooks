@@ -10,13 +10,16 @@ import AddInput from "./components/AddInput";
 import TodoItem from "./components/TodoItem";
 import ViewItem from "./components/ViewItem";
 import EditItem from "./components/EditItem";
+import DeleteItem from "./components/DeleteItem";
+import Toast from './components/Toast';
 
 function App() {
     const [isInputShow, setIsInputShow] = useState(false),
         [todoList, setTodoList] = useState([]),
         [currentItem, setCurrentItem] = useState({}),
         [showViewModal, setShowViewModal] = useState(false),
-        [showEditModal, setShowEditModal] = useState(false);
+        [showEditModal, setShowEditModal] = useState(false),
+        [showDeleteModal, setShowDeleteModal] = useState(false);
 
     useEffect(() => {
         // 挂载后从本地储存取数据
@@ -80,16 +83,17 @@ function App() {
 
     // 点击列表项的删除按钮
     const handleDeleteItem = useCallback((id) => {
-        setTodoList(todoList => todoList.filter(item => item.id !== id));
-    }, [])
+        changeCurrentItem(id);
+        setShowDeleteModal(true);
+    }, [todoList])
 
-    // 点击查看记录里的确定按钮
+    // 点击查看弹框里的确定按钮
     const handleClickConfirmBtn = useCallback(() => {
         setShowViewModal(false);
         setCurrentItem({});
     }, []);
 
-    // 点击编辑记录里的保存按钮
+    // 点击编辑弹框里的保存按钮
     const handleClickSaveBtn = useCallback((newData, oldId) => {
         if (oldId) {
             setTodoList((todoList) =>
@@ -100,11 +104,25 @@ function App() {
                     return item;
                 })
             );
+            Toast.toast('修改成功', 2000)
         }
         setShowEditModal(false);
         setCurrentItem({});
     }, []);
 
+    // 点击删除弹框里的确定按钮
+    const handleClickConfirmDeleteBtn = useCallback((id)=> {
+        setTodoList(todoList => todoList.filter(item => item.id !== id));
+        setShowDeleteModal(false);
+        Toast.toast('删除成功', 2000);
+        setCurrentItem({});
+    }, [])
+
+    // 点击删除弹框里的取消按钮
+    const handleClickCancelDeleteBtn = useCallback(()=> {
+        setShowDeleteModal(false);
+        setCurrentItem({});
+    }, [])
 
     return (
         <div className="App">
@@ -140,6 +158,12 @@ function App() {
                 data={currentItem}
                 show={showEditModal}
                 clickSaveBtn={handleClickSaveBtn}
+            />
+            <DeleteItem 
+                data={currentItem}
+                show={showDeleteModal}
+                clickConfirmBtn={handleClickConfirmDeleteBtn}
+                clickCancelBtn={handleClickCancelDeleteBtn}
             />
         </div>
     );

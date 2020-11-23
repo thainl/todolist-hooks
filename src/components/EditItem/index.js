@@ -27,8 +27,8 @@ export default function EditItem({ show, data, clickSaveBtn }) {
                 <h3 className="m-header">编辑事件</h3>
                 <div className="content-wrapper">
                     <p className="topic">时间： { data.id }</p>
-                    <p className="topic">内容：<textarea defaultValue={data.content} className="text-area" ref={inputRef}></textarea></p>
-                    <p className="topic">状态： <input ref={checkboxRef} className="check-box" type="checkbox" defaultValue={data.completed} /></p>
+                    <p className="topic content">内容：<textarea defaultValue={data.content} className="text-area" ref={inputRef}></textarea></p>
+                    <p className="topic">状态： <input ref={checkboxRef} className="check-box" type="checkbox" defaultChecked={data.completed} /></p>
                     <button className="btn btn-primary confirm-btn" onClick={ submitSave }>保存</button>
                 </div>
             </div>

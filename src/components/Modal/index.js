@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom'
-import './index.scss';
 
 export default function Modal({ children }) {
     const el = document.createElement('div');

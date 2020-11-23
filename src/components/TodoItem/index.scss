@@ -14,23 +14,36 @@
         }
     }
     .content {
+        position: relative;
         flex: 1;
         font-size: 0.64rem;
         line-height: 0.64rem;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        &.completed {
-            color: #999;
-            text-decoration: line-through;
+        transition-property: background;
+        transition-duration: .3s;
+        transition-timing-function: cubic-bezier(0.55, 0.09, 0.68, 0.53);
+        background-color: #999;
+        background-clip: text;
+        color: transparent;
+        background-image: url('../../assets/img/text-bg.jpg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        .line {
+            position: absolute;
+            left: 0;
+            top: 0.30rem;
+            width: 0;
+            height: 0.06rem;
+            background-color: #adadad;
+            transition: width .3s cubic-bezier(0.55, 0.09, 0.68, 0.53);
         }
     }
     .btn-group {
         display: flex;
         .btn {
             margin-left: 0.2rem;
-            border-radius: 0.08rem;
-            cursor: pointer;
         }
     }
 }

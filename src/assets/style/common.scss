@@ -13,9 +13,11 @@
     .inner {
         width: 11.2rem;
         background-color: #fff;
+        border-radius: 0.16rem;
+        overflow: hidden;
         .m-header {
             height: 1.52rem;
-            background-color: #337ab7;
+            background-color: #5bc0de;
             color: #fff;
             text-align: center;
             line-height: 1.52rem;
@@ -34,6 +36,11 @@
                 height: 0.56rem;
                 vertical-align: -0.08rem;
             }
+            &.content {
+                max-height: 4rem;
+                overflow-y: scroll;
+                line-height: 0.72rem;
+            }
         }
 
         .confirm-btn {
@@ -49,6 +56,23 @@
             padding: 0.2rem;
             margin-top: 0.28rem;
             font-size: 0.56rem;
+        }
+
+        .options-group {
+            display: flex;
+            margin-top: 1.6rem;
+            justify-content: space-around;
+            .cancel-btn {
+                flex: 1;
+                border-width: 0.04rem;
+                border-style: solid;
+                margin-right: 0.4rem;
+            }
+            .confirm-btn {
+                flex: 1;
+                width: auto;
+                margin-top: 0;
+            }
         }
     }
 }
