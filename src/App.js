@@ -13,18 +13,17 @@ import Toast from './components/Toast';
 
 function App() {
     const [isInputShow, setIsInputShow] = useState(false),
-        [todoList, setTodoList] = useState([]),
-        [currentItem, setCurrentItem] = useState({}),
-        // [showViewModal, setShowViewModal] = useState(false),
-        // [showEditModal, setShowEditModal] = useState(false),
-        // [showDeleteModal, setShowDeleteModal] = useState(false),
-        [showOperationModal, setShowOperationModal] = useState(false), // 是否显示操作模态框
-        [operationModalType, setOperationModalType] = useState(''); // 打开模态框的类型
+          [todoList, setTodoList] = useState([]),
+          [currentItem, setCurrentItem] = useState({}),
+          [showOperationModal, setShowOperationModal] = useState(false), // 是否显示操作模态框
+          [operationModalType, setOperationModalType] = useState(''); // 打开模态框的类型
 
     useEffect(() => {
         // 挂载后从本地储存取数据
-        const todoData = JSON.parse(localStorage.getItem("todoData") || "[]");
-        setTodoList(todoData);
+        if(todoList.length <= 0) {
+            const todoData = JSON.parse(localStorage.getItem("todoData") || "[]");
+            setTodoList(todoData);
+        }
     }, []);
 
     useLayoutEffect(() => {
@@ -39,8 +38,10 @@ function App() {
 
     // 添加一条记录
     const addItem = useCallback((value) => {
+        const time = Date.now();
         const item = {
-            id: Date.now(),
+            id: time,
+            updateTime: time,
             content: value,
             completed: false,
         };
@@ -109,7 +110,7 @@ function App() {
             setTodoList((todoList) =>
                 todoList.map((item) => {
                     if (item.id === oldId) {
-                        item = newData;
+                        Object.assign(item, newData);
                     }
                     return item;
                 })

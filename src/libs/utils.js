@@ -17,6 +17,22 @@ function getTextWidth (text, fontSize='0.64rem') {
     return width / rootFZ + 'rem';
 }
 
+function formatDate(date) {
+    let time = new Date(date),
+        Y = time.getFullYear(),
+        M = time.getMonth() + 1,
+        D = time.getDate(),
+        h = addZero(time.getHours()),
+        m = addZero(time.getMinutes()),
+        s = addZero(time.getSeconds());
+    return `${Y}-${M}-${D} ${h}:${m}:${s}`;
+}
+
+function addZero(num) {
+    return num < 10 ? '0' + num : '' + num;
+}
+
 export {
-    getTextWidth
+    getTextWidth,
+    formatDate
 };

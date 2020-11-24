@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { formatDate } from "../../libs/utils";
 import Modal from "../Modal";
 
 export default function OperationModal({
@@ -28,14 +29,18 @@ export default function OperationModal({
             inputRef.current.value = data.content;
             return;
         }
-        if (
-            data.content === val &&
-            data.completed === checkboxRef.current.checked
-        ) {
-            clickEditSaveBtn({}, null);
+        if (data.content === val) {
+            if(data.completed === checkboxRef.current.checked) {
+                // 内容无更改
+                clickEditSaveBtn({}, null);
+            }else {
+                // 更改了状态
+                clickEditSaveBtn({completed: checkboxRef.current.checked}, data.id);
+            }
         } else {
+            // 更改了content
             const newData = {
-                id: Date.now(),
+                updateTime: Date.now(),
                 content: val,
                 completed: checkboxRef.current.checked,
             };
@@ -54,7 +59,7 @@ export default function OperationModal({
                         : (editType ? "编辑" : "查看") + "事件"}
                 </h3>
                 <div className="content-wrapper">
-                    <p className="topic">时间： {data.id}</p>
+                    <p className="topic">时间： {formatDate(data.updateTime)}</p>
                     <p className="topic content">
                         内容：{" "}
                         {editType ? (
