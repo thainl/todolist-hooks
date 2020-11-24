@@ -35,10 +35,11 @@
                 width: 0.56rem;
                 height: 0.56rem;
                 vertical-align: -0.08rem;
+                cursor: pointer;
             }
             &.content {
                 max-height: 4rem;
-                overflow-y: scroll;
+                overflow-y: auto;
                 line-height: 0.72rem;
             }
         }
@@ -56,6 +57,7 @@
             padding: 0.2rem;
             margin-top: 0.28rem;
             font-size: 0.56rem;
+            resize: none;
         }
 
         .options-group {
