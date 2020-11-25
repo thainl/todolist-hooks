@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { getTextWidth } from "../../libs/utils";
+import Checkbox from "../Checkbox";
 import "./index.scss";
 
 export default function TodoItem({
@@ -20,11 +21,7 @@ export default function TodoItem({
         <li className="todo-item">
             <div className="wrapper">
                 <div className="check-box">
-                    <input
-                        type="checkbox"
-                        checked={item.completed}
-                        onChange={clickCheckbox.bind(null, item.id)}
-                    />
+                    <Checkbox checked={item.completed} onChange={clickCheckbox.bind(null, item.id)} />
                 </div>
                 <p
                     className="content"

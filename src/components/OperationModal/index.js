@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { formatDate } from "../../libs/utils";
+import Checkbox from "../Checkbox";
 import Modal from "../Modal";
 
 export default function OperationModal({
@@ -74,11 +75,9 @@ export default function OperationModal({
                     <p className="topic">
                         状态：{" "}
                         {editType ? (
-                            <input
+                            <Checkbox
                                 ref={checkboxRef}
-                                className="check-box"
-                                type="checkbox"
-                                defaultChecked={data.completed}
+                                checked={data.completed}
                             />
                         ) : data.completed ? (
                             "已完成"

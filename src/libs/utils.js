@@ -9,7 +9,7 @@ function getTextWidth (text, fontSize='0.64rem') {
     document.body.appendChild(el);
     let width = 0;
     if(oContent) {
-        width = el.offsetWidth > oContent.offsetWidth ? oContent.offsetWidth - (10.5 * (rootFZ / 25)) : el.offsetWidth;
+        width = el.offsetWidth > oContent.offsetWidth ? oContent.offsetWidth -2 : el.offsetWidth;
     }else {
         width = el.offsetWidth;
     }
