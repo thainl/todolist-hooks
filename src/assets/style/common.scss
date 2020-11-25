@@ -41,6 +41,7 @@
                 max-height: 4rem;
                 overflow-y: auto;
                 line-height: 0.72rem;
+                min-height: 1.04rem;
             }
         }
 
@@ -77,4 +78,13 @@
             }
         }
     }
+}
+
+.no-data-tip-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.64rem;
+    color: #999;
 }

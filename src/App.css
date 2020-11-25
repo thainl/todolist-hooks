@@ -1,4 +1,55 @@
 .todo-list {
-    margin-top: 1.76rem;
-    transition: transform .3s ease 0s;
+    width: 100%;
+    overflow-x: hidden;
+    transition: margin 0.3s ease 0s;
+}
+
+.item-enter {
+    opacity: 0;
+    height: 0;
+    transform: translateX(-100%);
+}
+.item-enter-active {
+    opacity: 1;
+    height: 2.8rem;
+    transform: translateX(0);
+    transition: opacity 600ms ease, height 300ms ease-in-out, transform 600ms ease;
+}
+.item-exit {
+    opacity: 1;
+    transform: translateX(0);
+    height: 2.8rem;
+}
+.item-exit-active {
+    opacity: 0;
+    height: 0;
+    transform: translateX(100%);
+    transition: opacity 400ms ease, height 500ms ease-in-out, transform 500ms ease;
+}
+
+.item-appear {
+    opacity: 0;
+}
+
+.item-appear-active {
+    opacity: 1;
+    transition: opacity 300ms;
+}
+
+.no-data-enter {
+    opacity: 0;
+}
+
+.no-data-enter-active {
+    opacity: 1;
+    transition: opacity .3s;
+}
+
+.no-data-exit {
+    opacity: 1;
+}
+
+.no-data-exit-active {
+    opacity: 0;
+    transition: opacity .3s;
 }

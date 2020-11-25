@@ -1,69 +1,111 @@
 html {
     font-size: 12px;
 }
+.my-checkbox-wrapper .my-checkbox .svg polyline {
+    transform: scale(0.48);
+}
 @media screen and (min-width: 240px) {
     html {
         font-size: 16px;
+    }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(0.64);
     }
 }
 @media screen and (min-width: 280px) {
     html {
         font-size: 18.66666666px;
     }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(0.746664);
+    }
 }
 @media screen and (min-width: 320px) {
     html {
         font-size: 21.33333333px;
+    }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(0.853333);
     }
 }
 @media screen and (min-width: 360px) {
     html {
         font-size: 24px;
     }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(0.96);
+    }
 }
 @media screen and (min-width: 375px) {
     html {
         font-size: 25px;
+    }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(1);
     }
 }
 @media screen and (min-width: 384px) {
     html {
         font-size: 25.6px;
     }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(1.024);
+    }
 }
 @media screen and (min-width: 400px) {
     html {
         font-size: 26.66666667px;
+    }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(1.066666);
     }
 }
 @media screen and (min-width: 414px) {
     html {
         font-size: 27.6px;
     }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(1.104);
+    }
 }
 @media screen and (min-width: 424px) {
     html {
         font-size: 28.26666667px;
+    }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(1.1307);
     }
 }
 @media screen and (min-width: 480px) {
     html {
         font-size: 32px;
     }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(1.28);
+    }
 }
 @media screen and (min-width: 540px) {
     html {
         font-size: 36px;
+    }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(1.44);
     }
 }
 @media screen and (min-width: 720px) {
     html {
         font-size: 48px;
     }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(1.92);
+    }
 }
 @media screen and (min-width: 750px) {
     html {
         font-size: 50px;
+    }
+    .my-checkbox-wrapper .my-checkbox .svg polyline {
+        transform: scale(2);
     }
 }
 

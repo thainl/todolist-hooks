@@ -52,7 +52,7 @@ export default function OperationModal({
             <div className="inner">
                 <h3
                     className="m-header"
-                    style={{ backgroundColor: deleteType ? "#e8993e" : "" }}
+                    style={{ backgroundColor: deleteType ? "#d9534f" : "" }}
                 >
                     {deleteType
                         ? "确定删除事件？"
