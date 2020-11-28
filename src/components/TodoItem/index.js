@@ -12,7 +12,19 @@ export default function TodoItem({
 }) {
     const contentRef = useRef();
     const lineRef = useRef();
+    const flagRef = useRef(true);
     useEffect(()=> {
+        if(flagRef.current) {
+            // 首次渲染不执行过渡
+            flagRef.current = false;
+            contentRef.current.style.transition = 'none';
+            lineRef.current.style.transition = 'none';
+        }else {
+            if(contentRef.current.style.transition.includes('none 0s')) {
+                contentRef.current.style.transition = null;
+                lineRef.current.style.transition = null;
+            }
+        }
         contentRef.current.style.backgroundPosition = item.completed ? getTextWidth(item.content) : '0';
         lineRef.current.style.width = item.completed ? getTextWidth(item.content) : '0';
     }, [item.content, item.completed]);

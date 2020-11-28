@@ -29,7 +29,6 @@ export default function ToastWrapper({ children, duration, onClose }) {
             unmountOnExit
             appear={true}
             timeout={300}
-            className="toast"
         >
             {(state) => (
                 <div

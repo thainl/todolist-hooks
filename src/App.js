@@ -60,10 +60,14 @@ function App() {
     }
 
     // 关闭操作模态框
+    let timer = null;
     const closeOperationModal = () => {
         setShowOperationModal(false);
-        setCurrentItem({});
-        setOperationModalType('');
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            setCurrentItem({});
+            setOperationModalType('');
+        }, 310);
     }
 
     // 点击列表项的查看按钮
@@ -130,6 +134,11 @@ function App() {
         closeOperationModal();
     }, [])
 
+    // 点击modal蒙层
+    const handleClickModalWrapper = useCallback(()=> {
+        closeOperationModal();
+    }, [])
+
     // const addEndListener = (node) => {
     //     node.addEventListener('transitionend', done, false);
     // }
@@ -180,18 +189,19 @@ function App() {
                     }
                 </TransitionGroup>
             </div>
+            <CSSTransition in={ todoList.length === 0 } unmountOnExit timeout={300} classNames="no-data" >
+                <NoDataTip />
+            </CSSTransition>
             <OperationModal
                 type={operationModalType}
                 data={currentItem}
                 show={showOperationModal}
+                clickModalWrapper={handleClickModalWrapper}
                 clickViewConfirmBtn={handleClickViewConfirmBtn}
                 clickEditSaveBtn={handleClickEditSaveBtn}
                 clickDeleteConfirmBtn={handleClickDeleteConfirmBtn}
                 clickDeleteCancelBtn={handleClickDeleteCancelBtn}
             />
-            <CSSTransition in={ todoList.length === 0 } unmountOnExit timeout={300} classNames="no-data" >
-                <NoDataTip />
-            </CSSTransition>
         </div>
     );
 }

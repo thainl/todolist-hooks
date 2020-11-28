@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { formatDate } from "../../libs/utils";
 import Checkbox from "../Checkbox";
-import Modal from "../Modal";
+import Mask from "../Mask";
+
 
 export default function OperationModal({
     type,
     show,
     data,
+    clickModalWrapper,
     clickViewConfirmBtn,
     clickDeleteConfirmBtn,
     clickDeleteCancelBtn,
@@ -16,13 +18,13 @@ export default function OperationModal({
         editType = type === "edit",
         inputRef = useRef(),
         checkboxRef = useRef();
-    
-    useEffect(()=> {
-        if(editType && inputRef.current) {
+
+    useEffect(() => {
+        if (editType && inputRef.current) {
             inputRef.current.value = data.content;
             inputRef.current.focus();
         }
-    }, [type])
+    }, [type]);
 
     function submitSave() {
         const val = inputRef.current.value.trim();
@@ -31,12 +33,15 @@ export default function OperationModal({
             return;
         }
         if (data.content === val) {
-            if(data.completed === checkboxRef.current.checked) {
+            if (data.completed === checkboxRef.current.checked) {
                 // 内容无更改
                 clickEditSaveBtn({}, null);
-            }else {
+            } else {
                 // 更改了状态
-                clickEditSaveBtn({completed: checkboxRef.current.checked}, data.id);
+                clickEditSaveBtn(
+                    { completed: checkboxRef.current.checked },
+                    data.id
+                );
             }
         } else {
             // 更改了content
@@ -48,19 +53,24 @@ export default function OperationModal({
             clickEditSaveBtn(newData, data.id);
         }
     }
-    return show ? (
-        <Modal>
+
+    return (
+        <Mask show={show} clickMask={clickModalWrapper}>
             <div className="inner">
                 <h3
                     className="m-header"
-                    style={{ backgroundColor: deleteType ? "#d9534f" : "" }}
+                    style={{
+                        backgroundColor: deleteType ? "#d9534f" : "",
+                    }}
                 >
                     {deleteType
                         ? "确定删除事件？"
                         : (editType ? "编辑" : "查看") + "事件"}
                 </h3>
                 <div className="content-wrapper">
-                    <p className="topic">时间： {formatDate(data.updateTime)}</p>
+                    <p className="topic">
+                        时间： {formatDate(data.updateTime)}
+                    </p>
                     <p className="topic content">
                         内容：{" "}
                         {editType ? (
@@ -89,13 +99,16 @@ export default function OperationModal({
                         {deleteType && (
                             <button
                                 className="btn btn-default cancel-btn"
-                                onClick={clickDeleteCancelBtn}
+                                onClick={()=>clickDeleteCancelBtn()}
                             >
                                 取消
                             </button>
                         )}
                         <button
-                            className={"btn confirm-btn " + (deleteType ? 'btn-danger' : 'btn-primary')}
+                            className={
+                                "btn confirm-btn " +
+                                (deleteType ? "btn-danger" : "btn-primary")
+                            }
                             onClick={() =>
                                 deleteType
                                     ? clickDeleteConfirmBtn(data.id)
@@ -104,13 +117,11 @@ export default function OperationModal({
                                     : clickViewConfirmBtn(data.id)
                             }
                         >
-                            {deleteType ? '删除' : editType ? '保存' : '确定'}
+                            {deleteType ? "删除" : editType ? "保存" : "确定"}
                         </button>
                     </div>
                 </div>
             </div>
-        </Modal>
-    ) : (
-        ""
+        </Mask>
     );
 }

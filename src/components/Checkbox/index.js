@@ -12,7 +12,7 @@ const Checkbox = forwardRef(({ children, checked, onChange }, inputRef)=> {
         if(inputRef) {
             active = inputRef.current.checked
         }else {
-            active = checked
+            active = !checked
         };
         checkboxRef.current.style.animation = active ? 'wave 0.4s ease' : 'none';
     }

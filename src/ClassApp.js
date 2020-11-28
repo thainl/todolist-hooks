@@ -6,7 +6,6 @@ import TodoItem from "./components/TodoItem";
 import OperationModal from "./components/OperationModal";
 import Toast from "./components/Toast";
 import NoDataTip from "./components/NoDataTip";
-import MyCheckbox from "./components/Checkbox";
 import './App.css';
 
 class ClassApp extends Component {
@@ -197,7 +196,6 @@ class ClassApp extends Component {
                 <CSSTransition in={ todoList.length === 0 } unmountOnExit timeout={300} classNames="no-data" >
                     <NoDataTip />
                 </CSSTransition>
-                <MyCheckbox onChange={()=>console.log('aas')} />
             </div>
         );
     }

@@ -1,20 +1,30 @@
-.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.modal-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 20;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, .5);
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal-mask {
+        position: absolute;
+        z-index: 21;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.45);
+    }
+    .modal-inner {
+        position: absolute;
+        z-index: 22;
+    }
     .inner {
         width: 11.2rem;
         background-color: #fff;
         border-radius: 0.16rem;
         overflow: hidden;
+        box-shadow: 0 0.12rem 0.24rem -0.16rem rgba(0,0,0,.12), 0 0.24rem 0.64rem 0 rgba(0,0,0,.08), 0 0.36rem 1.12rem 0.32rem rgba(0,0,0,.05);
         .m-header {
             height: 1.52rem;
             background-color: #5bc0de;
@@ -42,6 +52,7 @@
                 overflow-y: auto;
                 line-height: 0.72rem;
                 min-height: 1.04rem;
+                word-break: break-word;
             }
         }
 
@@ -87,4 +98,64 @@
     transform: translate(-50%, -50%);
     font-size: 0.64rem;
     color: #999;
+}
+
+.modal-appear {
+    opacity: 0;
+}
+
+.modal-appear-active {
+    opacity: 1;
+    transition: opacity .3s;
+}
+
+.modal-enter {
+    opacity: 0;
+}
+
+.modal-enter-active {
+    opacity: 1;
+    transition: opacity .3s;
+}
+
+.modal-exit {
+    opacity: 1;
+}
+
+.modal-exit-active {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.operation-appear {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+.operation-appear-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all .3s;
+}
+
+.operation-enter {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+.operation-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all .3s;
+}
+
+.operation-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.operation-exit-active {
+    opacity: 0;
+    transform: scale(0.6);
+    transition: all .3s;
 }
