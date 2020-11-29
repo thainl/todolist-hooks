@@ -20,11 +20,26 @@
         z-index: 22;
     }
     .inner {
+        position: relative;
+        margin-top: -2rem;
         width: 11.2rem;
         background-color: #fff;
         border-radius: 0.16rem;
         overflow: hidden;
         box-shadow: 0 0.12rem 0.24rem -0.16rem rgba(0,0,0,.12), 0 0.24rem 0.64rem 0 rgba(0,0,0,.08), 0 0.36rem 1.12rem 0.32rem rgba(0,0,0,.05);
+        .close {
+            position: absolute;
+            text-align: center;
+            line-height: 0.8rem;
+            width: 0.96rem;
+            height: 0.96rem;
+            top: 0.32rem;
+            right: 0.36rem;
+            font-size: 0.96rem;
+            transform: rotate(-45deg);
+            color: #fff;
+            cursor: pointer;
+        }
         .m-header {
             height: 1.52rem;
             background-color: #5bc0de;
@@ -127,6 +142,10 @@
     transition: opacity .3s;
 }
 
+.modal-exit-done {
+    display: none;
+}
+
 .operation-appear {
     opacity: 0;
     transform: scale(0.6);
@@ -140,7 +159,7 @@
 
 .operation-enter {
     opacity: 0;
-    transform: scale(0.6);
+    transform: scale(0.4);
 }
 
 .operation-enter-active {
@@ -156,6 +175,10 @@
 
 .operation-exit-active {
     opacity: 0;
-    transform: scale(0.6);
+    transform: scale(0.4);
     transition: all .3s;
+}
+
+.operation-exit-done {
+    display: none;
 }

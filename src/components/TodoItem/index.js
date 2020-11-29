@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { getTextWidth } from "../../libs/utils";
+import React, { useCallback, useEffect, useRef } from "react";
+import { getTextWidth, throttle, debounce } from "../../libs/utils";
 import Checkbox from "../Checkbox";
 import "./index.scss";
 
@@ -29,6 +29,12 @@ export default function TodoItem({
         lineRef.current.style.width = item.completed ? getTextWidth(item.content) : '0';
     }, [item.content, item.completed]);
 
+    function btnClickable() {
+        const oModal = document.querySelector('.modal-wrapper');
+        if(!oModal || oModal.style.display == 'none') return true;
+        return false;
+    }
+
     return (
         <li className="todo-item">
             <div className="wrapper">
@@ -45,19 +51,19 @@ export default function TodoItem({
                 <div className="btn-group">
                     <button
                         className="btn btn-primary"
-                        onClick={() => clickViewBtn(item.id)}
+                        onClick={() => btnClickable() && clickViewBtn(item.id)}
                     >
                         查看
                     </button>
                     <button
                         className="btn btn-warning"
-                        onClick={() => clickEditBtn(item.id)}
+                        onClick={() => btnClickable() && clickEditBtn(item.id)}
                     >
                         编辑
                     </button>
                     <button
                         className="btn btn-danger"
-                        onClick={() => clickDeleteBtn(item.id)}
+                        onClick={() => btnClickable() && clickDeleteBtn(item.id)}
                     >
                         删除
                     </button>

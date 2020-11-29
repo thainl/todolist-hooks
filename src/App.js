@@ -55,19 +55,20 @@ function App() {
     // 打开操作模态框
     const openOperationModal = (type, id) => {
         setOperationModalType(type);
-        changeCurrentItem(id);
-        setShowOperationModal(true);
+        changeCurrentItem(id);       
     }
+    useEffect(()=>{
+        // 当当前记录有效时才打开操作模态框
+        if(currentItem.id) {
+            setShowOperationModal(true);
+        }else {
+            showOperationModal && setShowOperationModal(false);
+        }
+    }, [currentItem])
 
     // 关闭操作模态框
-    let timer = null;
     const closeOperationModal = () => {
         setShowOperationModal(false);
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-            setCurrentItem({});
-            setOperationModalType('');
-        }, 310);
     }
 
     // 点击列表项的查看按钮
@@ -134,9 +135,15 @@ function App() {
         closeOperationModal();
     }, [])
 
-    // 点击modal蒙层
-    const handleClickModalWrapper = useCallback(()=> {
+    // 关闭modal蒙层
+    const handleCloseModal = useCallback(()=> {
         closeOperationModal();
+    }, [])
+
+    // modal关闭后的回调
+    const handleModalClosed = useCallback(()=> {
+        setCurrentItem({});
+        setOperationModalType('');
     }, [])
 
     // const addEndListener = (node) => {
@@ -196,14 +203,16 @@ function App() {
                 type={operationModalType}
                 data={currentItem}
                 show={showOperationModal}
-                clickModalWrapper={handleClickModalWrapper}
+                closeModal={handleCloseModal}
                 clickViewConfirmBtn={handleClickViewConfirmBtn}
                 clickEditSaveBtn={handleClickEditSaveBtn}
                 clickDeleteConfirmBtn={handleClickDeleteConfirmBtn}
                 clickDeleteCancelBtn={handleClickDeleteCancelBtn}
+                onClosed={handleModalClosed}
             />
         </div>
     );
 }
 
 export default App;
+ 

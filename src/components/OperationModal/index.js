@@ -8,23 +8,35 @@ export default function OperationModal({
     type,
     show,
     data,
-    clickModalWrapper,
+    closeModal,
     clickViewConfirmBtn,
     clickDeleteConfirmBtn,
     clickDeleteCancelBtn,
     clickEditSaveBtn,
+    onClosed
 }) {
     const deleteType = type === "delete",
-        editType = type === "edit",
-        inputRef = useRef(),
-        checkboxRef = useRef();
+          editType = type === "edit",
+          inputRef = useRef(),
+          checkboxRef = useRef();
 
     useEffect(() => {
         if (editType && inputRef.current) {
             inputRef.current.value = data.content;
             inputRef.current.focus();
         }
-    }, [type]);
+        !maskClickable && setMaskClickable(true);
+    }, [show]);
+
+    // 在编辑状态下，改变了内容禁用点击mask关闭modal
+    const [maskClickable, setMaskClickable] = useState(true);
+    const onBlur = (e) => {
+        if(e.target.value === data.content) {
+            !maskClickable && setMaskClickable(true);
+        }else {
+            maskClickable && setMaskClickable(false);
+        }
+    }
 
     function submitSave() {
         const val = inputRef.current.value.trim();
@@ -55,8 +67,9 @@ export default function OperationModal({
     }
 
     return (
-        <Mask show={show} clickMask={clickModalWrapper}>
+        <Mask show={show} clickMask={ maskClickable ? closeModal : null } onClosed={onClosed}>
             <div className="inner">
+                <span className="close" onClick={()=>closeModal()}>&#43;</span>
                 <h3
                     className="m-header"
                     style={{
@@ -77,6 +90,7 @@ export default function OperationModal({
                             <textarea
                                 className="text-area"
                                 ref={inputRef}
+                                onBlur={onBlur}
                             ></textarea>
                         ) : (
                             data.content
