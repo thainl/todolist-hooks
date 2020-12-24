@@ -16,6 +16,7 @@ export default class Mask extends Component {
     }
     componentDidUpdate() {
         if (this.props.show) {
+            const scrollbarWidth = window.innerWidth - document.body.clientWidth;
             // 打开
             if (this.props.unmountOnHide) {
                 // 如果关闭后卸载组件，则每次打开时都要重新追加dom
@@ -26,6 +27,7 @@ export default class Mask extends Component {
                 this.el.style.display = "flex";
             }
             document.body.style.overflow = "hidden";
+            scrollbarWidth && (document.body.style.width = `calc(100% - ${scrollbarWidth}px)`);
         }
     }
 
@@ -38,7 +40,7 @@ export default class Mask extends Component {
             // 如果关闭后不卸载组件，在把dom隐藏不显示即可
             oModal.style.display = "none";
         }
-        document.body.style.overflow = "auto";
+        document.body.style = null;
         typeof this.props.onClosed === 'function' && this.props.onClosed();
     };
 
@@ -46,7 +48,7 @@ export default class Mask extends Component {
         if (
             this.el
                 .querySelector(".modal-mask")
-                .className.includes("modal-enter-done") &&
+                .className.indexOf("modal-enter-done") !== -1 &&
             typeof this.props.clickMask === "function"
         ) {
             // 走完进场动画才能点击蒙层

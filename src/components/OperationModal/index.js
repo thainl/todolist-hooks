@@ -67,7 +67,7 @@ export default function OperationModal({
     }
 
     return (
-        <Mask show={show} clickMask={ maskClickable ? closeModal : null } onClosed={onClosed}>
+        <Mask show={show} clickMask={ maskClickable ? closeModal : null } unmountOnHide={false} onClosed={onClosed}>
             <div className="inner">
                 <span className="close" onClick={()=>closeModal()}>&#43;</span>
                 <h3
