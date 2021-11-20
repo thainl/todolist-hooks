@@ -1,7 +1,10 @@
 .todo-list {
     width: 100%;
+    min-height: 100vh;
+    padding-bottom: 2rem;
     overflow-x: hidden;
-    transition: margin 0.3s ease 0s;
+    transition: padding 0.3s ease 0s;
+    box-sizing: border-box;
 }
 
 .item-enter {

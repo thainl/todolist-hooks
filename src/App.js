@@ -11,6 +11,7 @@ import TodoItem from "./components/TodoItem";
 import OperationModal from "./components/OperationModal";
 import Toast from './components/Toast';
 import NoDataTip from "./components/NoDataTip";
+import Footer from './components/Footer';
 
 function App() {
     const [isInputShow, setIsInputShow] = useState(false),
@@ -171,7 +172,7 @@ function App() {
             <div
                 className="todo-list"
                 style={{
-                    marginTop: isInputShow ? "3.28rem" : "1.76rem",
+                    paddingTop: isInputShow ? "3.28rem" : "1.76rem",
                 }}
             >
                 <TransitionGroup component="ul">
@@ -210,6 +211,7 @@ function App() {
                 clickDeleteCancelBtn={handleClickDeleteCancelBtn}
                 onClosed={handleModalClosed}
             />
+            <Footer />
         </div>
     );
 }
