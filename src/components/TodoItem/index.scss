@@ -9,19 +9,19 @@
         border-bottom: 0.04rem solid #ddd;
         padding: 0.4rem 0.32rem;
         box-sizing: border-box;
+        .my-checkbox-wrapper {
+            margin: 0 0.4rem;
+            input {
+                margin: 0;
+                width: 0.56rem;
+                height: 0.56rem;
+                cursor: pointer;
+            }
+        }
     }
     // &:last-of-type .wrapper {
     //     border-bottom: 0;
     // }
-    .check-box {
-        margin: 0 0.4rem;
-        input {
-            margin: 0;
-            width: 0.56rem;
-            height: 0.56rem;
-            cursor: pointer;
-        }
-    }
     .content {
         position: relative;
         flex: 1;

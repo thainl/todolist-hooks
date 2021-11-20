@@ -38,9 +38,7 @@ export default function TodoItem({
     return (
         <li className="todo-item">
             <div className="wrapper">
-                <div className="check-box">
-                    <Checkbox checked={item.completed} onChange={clickCheckbox.bind(null, item.id)} />
-                </div>
+                <Checkbox className="check-box" checked={item.completed} onChange={clickCheckbox.bind(null, item.id)} />
                 <p
                     className="content"
                     ref={contentRef}

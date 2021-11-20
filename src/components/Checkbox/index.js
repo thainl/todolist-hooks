@@ -33,7 +33,7 @@ const Checkbox = forwardRef(({ children, checked, onChange }, inputRef)=> {
                     <polyline points="2 5.5 4.5 8 9.5 1.5"></polyline>
                 </svg>
             </span>
-            <span className="text">{children}</span>
+            {children && <span className="text">{children}</span>}
         </label>
     );
 })
